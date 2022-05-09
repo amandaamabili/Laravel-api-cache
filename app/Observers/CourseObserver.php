@@ -18,7 +18,7 @@ class CourseObserver
      */
     public function created(Course $course)
     {
-        $course->id = Uuid::uuid4();
+        $course->uuid = Uuid::uuid4();
     }
 
     /**

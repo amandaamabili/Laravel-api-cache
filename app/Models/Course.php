@@ -15,7 +15,7 @@ class Course extends Model
      */
     protected static function booted()
     {
-        static::creating(fn(Course $course) => $course->id = (string) Uuid::uuid4());
+        static::creating(fn(Course $course) => $course->uuid = (string) Uuid::uuid4());
     }
     protected $fillable = [ 'name', 'description'];
 }
