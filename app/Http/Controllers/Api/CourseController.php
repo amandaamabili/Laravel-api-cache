@@ -39,24 +39,21 @@ class CourseController extends Controller
      */
     public function store(StoreUpdateCourse $request)
     {
-        try {
             $course =  $this->courseService->createNewCourse($request->validated());
             return new CourseResource($course);
-        }catch (InvalidArgumentException){
-            dd(InvalidArgumentException);
-        }
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $indentify
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($indentify)
     {
-        //
+        $course =  $this->courseService->getCourse($indentify);
+        return  new  CourseResource($course);
     }
 
     /**

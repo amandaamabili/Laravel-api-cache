@@ -18,4 +18,7 @@ class CourseRepository
     public function  createNewCourse(array $data){
         return $this->entity->create($data);
     }
+    public function  getCourseByUuid(string $identify){
+        return $this->entity->where('uuid', $identify)->firstOrFail();
+    }
 }
