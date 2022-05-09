@@ -7,7 +7,9 @@ use App\Http\Requests\StoreUpdateCourse;
 use App\Http\Resources\CourseResource;
 use App\Models\Course;
 use App\Services\CourseService;
+use http\Exception\InvalidArgumentException;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class CourseController extends Controller
 {
@@ -37,8 +39,13 @@ class CourseController extends Controller
      */
     public function store(StoreUpdateCourse $request)
     {
-        $course =  $this->courseService->createNewCourse($request->validated());
-        return new CourseResource($course);
+        try {
+            $course =  $this->courseService->createNewCourse($request->validated());
+            return new CourseResource($course);
+        }catch (InvalidArgumentException){
+            dd(InvalidArgumentException);
+        }
+
     }
 
     /**
