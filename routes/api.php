@@ -5,7 +5,9 @@ use \App\Http\Controllers\Api\{
     CourseController
 };
     Route::get('/courses', [CourseController::class, 'index']);
-    Route::get('/', function (){
+    Route::post('/courses', [CourseController::class, 'store']);
+
+Route::get('/', function (){
     return response() -> json(['message' => 'ok']);
 
 
